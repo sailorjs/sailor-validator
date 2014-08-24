@@ -1,0 +1,29 @@
+{
+  "name": "sailor-validator",
+  "description": "Facade for validate things in Sailor System",
+  "version": "0.0.1",
+  "author": {
+    "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
+    "url": "https://github.com/Kikobeats"
+  },
+  "dependencies": {
+    "validator": "*"
+    },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./index.js",
+  "repository": "Kikobeats/sailor-validator",
+  "scripts": {
+    "test": "sh test/test.sh",
+    "prepublish": "npm prune"
+  }
+}
