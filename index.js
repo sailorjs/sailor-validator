@@ -1,9 +1,13 @@
 /**
  * Dependencies
  */
-var validator = require('validator');
+var validator = require('express-validator');
+var expressValidator = require('express-validator/node_modules/validator');
 
 /**
  * Exports
  */
-module.exports = validator;
+module.exports = {
+  validator       : validator,
+  expressValidator: expressValidator
+};
