@@ -31,7 +31,7 @@ validator = sailor.validator
 
 Use in combine with [sailor-errorify](https://github.com/sailorjs/sailor-errorify) for serializer the errors. For example:
 
-```
+```coffeescript
 req.checkBody('email', translate.get "User.Email.NotFound").notEmpty()
 req.checkBody('password', translate.get "User.Password.NotFound").notEmpty()
 req.checkBody('password', translate.get "User.Password.Invalid").isAlphanumeric()
