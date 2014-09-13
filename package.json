@@ -23,10 +23,8 @@
     "validator"
   ],
   "license": "MIT",
-  "main": "./index.js",
   "repository": "Kikobeats/sailor-validator",
   "scripts": {
-    "test": "sh test/test.sh",
-    "prepublish": "npm prune"
+    "test": "sh test/test.sh"
   }
 }
