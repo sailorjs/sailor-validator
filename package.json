@@ -1,13 +1,14 @@
 {
   "name": "sailor-validator",
   "description": "Validator for Sailor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/Kikobeats"
   },
   "dependencies": {
+    "coffee-script": "*",
     "express-validator": "*",
     "lodash" : "*"
   },
@@ -18,7 +19,6 @@
   "engines": {
     "node": "*"
   },
-  "homepage": "",
   "keywords": [
     "sailor",
     "validator"
