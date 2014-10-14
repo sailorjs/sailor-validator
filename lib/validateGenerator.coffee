@@ -19,16 +19,11 @@ class validateGenerator
     @_validate[param][condition] = message: message, value: expected
     this
 
-  @find: ->
-    this
-
   @end: (cb) ->
-    console.log @_validate
     params = Object.keys(@_validate)
-
-    _.forEach params, (param) =>
+    async.each params, (param) =>
       conditions =  Object.keys(@_validate[param])
-      _.forEach conditions, (condition) =>
+      async.each conditions, (condition) =>
         if @_validate[param][condition].value?
           @_req.assert(param, @_validate[param].message)[condition](@_validate[param][condition].value)
         else
@@ -36,7 +31,7 @@ class validateGenerator
 
     return @_res.badRequest(expressValidator.serialize(@_req)) if @_req.validationErrors()
     allParams = {}
-    _.forEach params, (param) =>
+    async.each params, (param) =>
       allParams[param] = @_req.param "#{param}"
 
     cb(allParams)
