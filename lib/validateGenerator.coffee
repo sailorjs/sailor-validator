@@ -25,16 +25,15 @@ class validateGenerator
       conditions =  Object.keys(@_validate[param])
       async.each conditions, (condition) =>
         if @_validate[param][condition].value?
-          @_req.assert(param, @_validate[param].message)[condition](@_validate[param][condition].value)
+          @_req.assert(param, @_validate[param][condition].message)[condition](@_validate[param][condition].value)
         else
-          @_req.assert(param, @_validate[param].message)[condition]()
+          @_req.assert(param, @_validate[param][condition].message)[condition]()
 
-    return @_res.badRequest(expressValidator.serialize(@_req)) if @_req.validationErrors()
-    allParams = {}
-    async.each params, (param) =>
-      allParams[param] = @_req.param "#{param}"
+    if @_req.validationErrors()
+      errors = expressValidator.serialize(@_req)
+      return @_res.badRequest(errors)
 
-    cb(allParams)
+    cb(@_req.allParams())
 
 ## -- Exports ------------------------------------------------------------------
 
