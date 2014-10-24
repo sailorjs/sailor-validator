@@ -8,7 +8,6 @@
     "url": "https://github.com/Kikobeats"
   },
   "dependencies": {
-    "async": "*",
     "coffee-script": "*",
     "express-validator": "*",
     "express-validator-errors": "*",

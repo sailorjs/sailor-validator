@@ -1,7 +1,6 @@
 ## -- Dependencies -------------------------------------------------------------
 
 _                = require 'lodash'
-async            = require 'async'
 expressValidator = require 'express-validator-errors'
 
 ## -- Class --------------------------------------------------------------------
@@ -21,9 +20,9 @@ class validateGenerator
 
   @end: (cb) ->
     params = Object.keys(@_validate)
-    async.each params, (param) =>
+    _.forEach params, (param) =>
       conditions =  Object.keys(@_validate[param])
-      async.each conditions, (condition) =>
+      _.forEach conditions, (condition) =>
         if @_validate[param][condition].value?
           @_req.assert(param, @_validate[param][condition].message)[condition](@_validate[param][condition].value)
         else
