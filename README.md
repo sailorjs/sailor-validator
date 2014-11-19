@@ -8,7 +8,7 @@
 [![NPM Status](http://img.shields.io/npm/dm/sailor-validator.svg?style=flat)](https://www.npmjs.org/package/sailor-validator)
 [![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat)](https://www.gittip.com/Kikobeats/)
 
-> Ensure and validate things from your request. Extend [express-validator](https://github.com/ctavan/express-validator) interface.
+> Ensure and validate things from your request. Extend [validator.js](https://github.com/chriso/validator.js) interface.
 
 ## Install
 
@@ -39,6 +39,8 @@ validator
 ```
 
 In this example, if `user` param is empty compound a badRequest response that follow `sailor-errorify` schema for errors.
+
+For validate in the request you need to enable [sailor-modulde-validator](https://github.com/sailorjs/sailor-module-validator).
 
 ## License
 

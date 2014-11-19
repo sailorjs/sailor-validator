@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "coffee-script": "*",
-    "sailor-errorify": "git://github.com/sailorjs/sailor-errorify",
-    "lodash": "*"
+    "express-validator": "*",
+    "lodash": "*",
+    "sailor-errorify": "git://github.com/sailorjs/sailor-errorify"
   },
   "devDependencies": {
     "mocha": "*",
