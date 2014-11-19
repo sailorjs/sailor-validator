@@ -1,7 +1,7 @@
 ## -- Dependencies -------------------------------------------------------------
 
-_                = require 'lodash'
-expressValidator = require 'express-validator-errors'
+_        = require 'lodash'
+errorify = require 'sailor-errorify'
 
 ## -- Class --------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ class validateGenerator
           @_req.assert(param, @_validate[param][condition].message)[condition]()
 
     if @_req.validationErrors()
-      errors = expressValidator.serialize(@_req)
+      errors = errorify.serialize(@_req)
       return @_res.badRequest(errors)
 
     cb(@_req.allParams())

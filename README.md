@@ -8,17 +8,17 @@
 [![NPM Status](http://img.shields.io/npm/dm/sailor-validator.svg?style=flat)](https://www.npmjs.org/package/sailor-validator)
 [![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat)](https://www.gittip.com/Kikobeats/)
 
-> Ensure and validate things from your request. based on [express-validator](https://github.com/ctavan/express-validator).
+> Ensure and validate things from your request. Extend [express-validator](https://github.com/ctavan/express-validator) interface.
 
 ## Install
 
-```coffeescript
+```bash
 npm install sailor-validator
 ```
 
 ## Usage
 
-```coffeescript
+```coffee
 validator = require 'sailor-validator'
 ```
 
@@ -29,20 +29,17 @@ sailor 	 = require 'sailorjs'
 validator = sailor.validator
 ```
 
-Use in combine with [sailor-errorify](https://github.com/sailorjs/sailor-errorify) for serializer the errors. For example:
+Ideal for validate thing as pre-conditions in your request:
 
-```coffeescript
-req.checkBody('email', translate.get "User.Email.NotFound").notEmpty()
-req.checkBody('password', translate.get "User.Password.NotFound").notEmpty()
-req.checkBody('password', translate.get "User.Password.Invalid").isAlphanumeric()
-req.checkBody('password', translate.get "User.Password.MinLength").isLength(passwordLength)
-return next(errorify.serialize(req)) if req.validationErrors()
+```coffee
+validator
+  .begin(req, res)
+  .add 'user', translate.get('User.NotFound'), 'notEmpty'
+  .end (params) ->
 ```
 
-For more information check [express validator documentation](https://github.com/ctavan/express-validator#usage).
+In this example, if `user` param is empty compound a badRequest response that follow `sailor-errorify` schema for errors.
 
 ## License
 
 MIT © [Kiko Beats](http://www.kikobeats.com)
-
-
