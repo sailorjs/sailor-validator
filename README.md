@@ -44,4 +44,4 @@ For validate in the request you need to enable [sailor-modulde-validator](https:
 
 ## License
 
-MIT © [Kiko Beats](http://www.kikobeats.com)
+MIT © sailorjs
