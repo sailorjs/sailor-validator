@@ -1,9 +1,4 @@
-## -- Dependencies -------------------------------------------------------------
-
-_        = require 'lodash'
 errorify = require 'sailor-errorify'
-
-## -- Class --------------------------------------------------------------------
 
 class validateGenerator
 
@@ -13,20 +8,16 @@ class validateGenerator
     @_validate = {}
     this
 
-  @add: (param, message, condition, expected=undefined)->
+  @add: (param, message, conditions...)->
     @_validate[param] = {} unless @_validate[param]?
-    @_validate[param][condition] = message: message, value: expected
+    @_validate[param][condition] = message: message for condition in conditions
     this
 
   @end: (cb) ->
-    params = Object.keys(@_validate)
-    _.forEach params, (param) =>
-      conditions =  Object.keys(@_validate[param])
-      _.forEach conditions, (condition) =>
-        if @_validate[param][condition].value?
-          @_req.assert(param, @_validate[param][condition].message)[condition](@_validate[param][condition].value)
-        else
-          @_req.assert(param, @_validate[param][condition].message)[condition]()
+    for param of @_validate
+      for condition of @_validate[param]
+        entry = @_validate[param][condition]
+        @_req.assert(param, entry.message)[condition]()
 
     if @_req.validationErrors()
       errors = errorify.serialize(@_req)
@@ -34,6 +25,4 @@ class validateGenerator
 
     cb(@_req.allParams())
 
-## -- Exports ------------------------------------------------------------------
-
-exports = module.exports = validateGenerator
+module.exports = validateGenerator
